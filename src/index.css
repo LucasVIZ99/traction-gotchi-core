@@ -2,41 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* 8-bit Retro Design System - Tractiongotchi 
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* 8-bit Game Boy inspired palette */
+    --background: 120 20% 97%;  /* Light cream background */
+    --foreground: 120 25% 15%;  /* Dark green text */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 120 15% 92%;
+    --card-foreground: 120 25% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 120 15% 92%;
+    --popover-foreground: 120 25% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Game Boy green */
+    --primary: 120 100% 25%;    /* Deep retro green */
+    --primary-foreground: 120 20% 97%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Lighter green */
+    --secondary: 120 30% 75%;
+    --secondary-foreground: 120 25% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted - Mid green */
+    --muted: 120 20% 85%;
+    --muted-foreground: 120 25% 35%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Bright pixel green */
+    --accent: 120 100% 35%;
+    --accent-foreground: 120 20% 97%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Retro colors */
+    --pixel-red: 0 100% 50%;
+    --pixel-orange: 30 100% 50%;
+    --pixel-yellow: 60 100% 50%;
+    --pixel-blue: 240 100% 50%;
+    --pixel-purple: 280 100% 50%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 120 20% 97%;
 
-    --radius: 0.5rem;
+    --border: 120 20% 80%;
+    --input: 120 15% 90%;
+    --ring: 120 100% 35%;
+
+    --radius: 2px;  /* Sharp pixel edges */
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +112,44 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-mono;
+  }
+
+  /* 8-bit pixel art styles */
+  .pixel-perfect {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+
+  .retro-border {
+    border: 3px solid hsl(var(--border));
+    border-style: outset;
+  }
+
+  .pixel-shadow {
+    box-shadow: 3px 3px 0px hsl(var(--muted));
+  }
+}
+
+@layer components {
+  /* Pixel animations */
+  .pixel-bounce {
+    animation: pixelBounce 2s ease-in-out infinite;
+  }
+
+  .pixel-glow {
+    animation: pixelGlow 1.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes pixelBounce {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-4px); }
+  }
+
+  @keyframes pixelGlow {
+    0% { filter: brightness(1); }
+    100% { filter: brightness(1.2) drop-shadow(0 0 4px hsl(var(--accent))); }
   }
 }

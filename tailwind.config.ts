@@ -52,6 +52,14 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// 8-bit retro palette
+				pixel: {
+					red: 'hsl(var(--pixel-red))',
+					orange: 'hsl(var(--pixel-orange))',
+					yellow: 'hsl(var(--pixel-yellow))',
+					blue: 'hsl(var(--pixel-blue))',
+					purple: 'hsl(var(--pixel-purple))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -62,6 +70,9 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				}
+			},
+			fontFamily: {
+				mono: ['ui-monospace', 'SFMono-Regular', 'Consolas', 'monospace']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
