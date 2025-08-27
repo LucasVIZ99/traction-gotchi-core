@@ -51,40 +51,43 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <header className="text-center py-6 bg-card retro-border pixel-shadow mx-4 mt-4">
-        <h1 className="text-3xl font-bold font-mono text-primary mb-2">
-          TRACTIONGOTCHI
+      <header className="glass-card mx-6 mt-6 rounded-3xl p-8 text-center shadow-xl">
+        <h1 className="text-4xl md:text-5xl font-bold text-primary mb-3">
+          Tractiongotchi
         </h1>
-        <p className="text-sm font-mono text-muted-foreground">
-          par Lucas Lefèvre
+        <p className="text-muted-foreground">
+          Développé par <span className="font-semibold text-primary">Lucas Lefèvre</span>
+        </p>
+        <p className="text-sm text-muted-foreground mt-2">
+          Gardez votre alien virtuel en vie grâce aux tractions ! 👽
         </p>
       </header>
 
       {/* Main content */}
-      <main className="flex-1 flex flex-col items-center justify-center p-4 space-y-8">
+      <main className="flex-1 flex flex-col items-center justify-center p-6 space-y-10">
         <Tractiongotchi 
           records={records}
           className="animate-fade-in"
         />
 
         {/* Action buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md">
+        <div className="flex flex-col sm:flex-row gap-4 w-full max-w-lg">
           <Button
             onClick={() => setShowForm(true)}
             variant="default"
-            className="flex-1 font-mono text-base py-3"
+            className="flex-1 text-lg py-4 px-8"
           >
-            🏋️ ENCODER TRACTIONS
+            🏋️ Enregistrer tractions
           </Button>
           
           <Button
             onClick={() => setShowChart(true)}
-            variant="secondary"
-            className="flex-1 font-mono text-base py-3"
+            variant="outline"
+            className="flex-1 text-lg py-4 px-8"
           >
-            📊 VOIR PROGRESSION
+            📊 Voir progression
           </Button>
         </div>
 
@@ -93,16 +96,17 @@ const Index = () => {
           <Button
             onClick={resetCreature}
             variant="destructive"
-            className="font-mono text-sm"
+            className="text-base px-6 py-3"
           >
-            🔄 RECOMMENCER
+            🔄 Recommencer
           </Button>
         )}
       </main>
 
       {/* Footer */}
-      <footer className="text-center py-4 text-xs font-mono text-muted-foreground">
-        <p>Gardez votre Tractiongotchi en vie avec des tractions régulières ! 💪</p>
+      <footer className="text-center py-6 text-sm text-muted-foreground">
+        <p>© 2024 Lucas Lefèvre - Tractiongotchi</p>
+        <p className="text-xs mt-1">Votre compagnon virtuel pour rester motivé ! 💪</p>
       </footer>
     </div>
   );

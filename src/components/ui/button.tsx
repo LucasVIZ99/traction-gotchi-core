@@ -5,18 +5,18 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all duration-300 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 retro-border pixel-shadow rounded-none",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90 rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02]",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90 retro-border pixel-shadow rounded-none",
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90 rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02]",
         outline:
-          "border-2 border-primary bg-background text-primary hover:bg-primary hover:text-primary-foreground retro-border pixel-shadow rounded-none",
+          "glass-button text-primary hover:text-primary-foreground rounded-xl scale-hover",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80 retro-border pixel-shadow rounded-none",
-        ghost: "hover:bg-accent hover:text-accent-foreground rounded-none",
+          "glass-card text-secondary-foreground rounded-xl shadow-lg hover:shadow-xl scale-hover",
+        ghost: "hover:bg-accent/10 hover:text-accent rounded-xl",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {

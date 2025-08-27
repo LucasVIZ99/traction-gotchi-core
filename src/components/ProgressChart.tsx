@@ -26,50 +26,58 @@ export default function ProgressChart({ records, onClose }: ProgressChartProps) 
   const totalSessions = records.length;
 
   return (
-    <Card className="w-full max-w-4xl mx-auto retro-border pixel-shadow">
-      <CardHeader>
-        <CardTitle className="text-center font-mono text-primary">
-          📊 PROGRESSION TRACTIONS
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        {records.length === 0 ? (
-          <div className="text-center py-8">
-            <p className="font-mono text-muted-foreground">
-              Aucun enregistrement pour le moment...
-            </p>
-          </div>
+    <div className="w-full max-w-5xl mx-auto glass-card rounded-3xl p-8 shadow-2xl">
+      <div className="text-center mb-8">
+        <h2 className="text-3xl font-bold text-primary mb-2">
+          📊 Votre progression
+        </h2>
+        <p className="text-muted-foreground">
+          Suivez l'évolution de vos performances
+        </p>
+      </div>
+      {records.length === 0 ? (
+        <div className="text-center py-12">
+          <p className="text-muted-foreground text-lg">
+            Aucun enregistrement pour le moment...
+          </p>
+          <p className="text-muted-foreground text-sm mt-2">
+            Commencez par enregistrer vos premières tractions !
+          </p>
+        </div>
         ) : (
           <>
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              <div className="text-center bg-secondary retro-border p-3">
-                <p className="font-mono text-sm text-muted-foreground">RECORD PERSONNEL</p>
-                <p className="font-mono text-2xl font-bold text-primary">{maxRecord}</p>
-              </div>
-              <div className="text-center bg-secondary retro-border p-3">
-                <p className="font-mono text-sm text-muted-foreground">TOTAL SÉANCES</p>
-                <p className="font-mono text-2xl font-bold text-primary">{totalSessions}</p>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="text-center glass-card rounded-2xl p-6">
+              <p className="text-sm text-muted-foreground mb-2">Record personnel</p>
+              <p className="text-4xl font-bold text-primary">{maxRecord}</p>
+              <p className="text-xs text-muted-foreground mt-1">répétitions</p>
             </div>
-            
-            <div className="h-64 w-full">
+            <div className="text-center glass-card rounded-2xl p-6">
+              <p className="text-sm text-muted-foreground mb-2">Total séances</p>
+              <p className="text-4xl font-bold text-primary">{totalSessions}</p>
+              <p className="text-xs text-muted-foreground mt-1">entraînements</p>
+            </div>
+          </div>
+          
+          <div className="glass-card rounded-2xl p-6">
+            <div className="h-80 w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={chartData}>
                   <CartesianGrid strokeDasharray="3 3" className="opacity-30" />
                   <XAxis 
                     dataKey="date" 
-                    className="font-mono text-xs"
+                    className="text-xs"
                   />
                   <YAxis 
-                    className="font-mono text-xs"
+                    className="text-xs"
                   />
                   <Tooltip 
-                    labelClassName="font-mono"
                     contentStyle={{
                       backgroundColor: 'hsl(var(--card))',
-                      border: '2px solid hsl(var(--border))',
-                      borderRadius: '2px',
-                      fontFamily: 'monospace'
+                      border: '1px solid hsl(var(--border))',
+                      borderRadius: '12px',
+                      backdropFilter: 'blur(20px)',
+                      boxShadow: '0 8px 32px hsl(220 30% 0% / 0.1)'
                     }}
                   />
                   <Line 
@@ -83,19 +91,19 @@ export default function ProgressChart({ records, onClose }: ProgressChartProps) 
                 </LineChart>
               </ResponsiveContainer>
             </div>
-          </>
-        )}
-        
-        <div className="flex justify-center pt-4">
-          <Button
-            onClick={onClose}
-            className="font-mono retro-border pixel-shadow"
-            variant="secondary"
-          >
-            FERMER
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
+          </div>
+        </>
+      )}
+      
+      <div className="flex justify-center pt-8">
+        <Button
+          onClick={onClose}
+          variant="outline"
+          className="px-8 py-3"
+        >
+          Fermer
+        </Button>
+      </div>
+    </div>
   );
 }

@@ -2,53 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 8-bit Retro Design System - Tractiongotchi 
+/* Modern Glassmorphism Design System - Tractiongotchi 
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    /* 8-bit Game Boy inspired palette */
-    --background: 120 20% 97%;  /* Light cream background */
-    --foreground: 120 25% 15%;  /* Dark green text */
+    /* Modern gradient background */
+    --background: 220 20% 98%;  /* Clean light background */
+    --foreground: 220 25% 15%;  /* Dark text */
 
-    --card: 120 15% 92%;
-    --card-foreground: 120 25% 15%;
+    --card: 220 15% 98%;  /* Glass card background */
+    --card-foreground: 220 25% 15%;
 
-    --popover: 120 15% 92%;
-    --popover-foreground: 120 25% 15%;
+    --popover: 220 15% 98%;
+    --popover-foreground: 220 25% 15%;
 
-    /* Primary - Game Boy green */
-    --primary: 120 100% 25%;    /* Deep retro green */
-    --primary-foreground: 120 20% 97%;
+    /* Primary - Modern green */
+    --primary: 142 76% 36%;    /* Modern emerald green */
+    --primary-foreground: 220 20% 98%;
 
-    /* Secondary - Lighter green */
-    --secondary: 120 30% 75%;
-    --secondary-foreground: 120 25% 15%;
+    /* Secondary - Subtle glass */
+    --secondary: 220 30% 96%;
+    --secondary-foreground: 220 25% 15%;
 
-    /* Muted - Mid green */
-    --muted: 120 20% 85%;
-    --muted-foreground: 120 25% 35%;
+    /* Muted - Glass effect */
+    --muted: 220 20% 95%;
+    --muted-foreground: 220 25% 45%;
 
-    /* Accent - Bright pixel green */
-    --accent: 120 100% 35%;
-    --accent-foreground: 120 20% 97%;
+    /* Accent - Bright green */
+    --accent: 142 76% 46%;
+    --accent-foreground: 220 20% 98%;
 
-    /* Retro colors */
-    --pixel-red: 0 100% 50%;
-    --pixel-orange: 30 100% 50%;
-    --pixel-yellow: 60 100% 50%;
-    --pixel-blue: 240 100% 50%;
-    --pixel-purple: 280 100% 50%;
+    /* Glass colors */
+    --glass-primary: 142 76% 36% / 0.1;
+    --glass-secondary: 220 30% 96% / 0.8;
+    --glass-border: 220 30% 90% / 0.3;
 
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 120 20% 97%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 220 20% 98%;
 
-    --border: 120 20% 80%;
-    --input: 120 15% 90%;
-    --ring: 120 100% 35%;
+    --border: 220 13% 91%;
+    --input: 220 15% 96%;
+    --ring: 142 76% 36%;
 
-    --radius: 2px;  /* Sharp pixel edges */
+    --radius: 1rem;  /* Modern rounded corners */
+
+    /* Gradients */
+    --gradient-bg: linear-gradient(135deg, hsl(220 20% 98%) 0%, hsl(200 30% 96%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(220 15% 98% / 0.8) 0%, hsl(220 15% 96% / 0.6) 100%);
+  }
 
     --sidebar-background: 0 0% 98%;
 
@@ -112,10 +115,12 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground font-mono;
+    @apply text-foreground font-sans;
+    background: var(--gradient-bg);
+    min-height: 100vh;
   }
 
-  /* 8-bit pixel art styles */
+  /* 8-bit pixel art styles for Tractiongotchi only */
   .pixel-perfect {
     image-rendering: -moz-crisp-edges;
     image-rendering: -webkit-crisp-edges;
@@ -123,18 +128,29 @@ All colors MUST be HSL.
     image-rendering: crisp-edges;
   }
 
-  .retro-border {
-    border: 3px solid hsl(var(--border));
-    border-style: outset;
+  /* Modern glassmorphism styles */
+  .glass-card {
+    background: var(--gradient-card);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow: 0 8px 32px hsl(220 30% 0% / 0.1);
   }
 
-  .pixel-shadow {
-    box-shadow: 3px 3px 0px hsl(var(--muted));
+  .glass-button {
+    background: hsl(var(--glass-primary));
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--primary) / 0.2);
+    box-shadow: 0 4px 16px hsl(var(--primary) / 0.1);
+  }
+
+  .glass-button:hover {
+    background: hsl(var(--primary) / 0.15);
+    box-shadow: 0 6px 24px hsl(var(--primary) / 0.15);
   }
 }
 
 @layer components {
-  /* Pixel animations */
+  /* Pixel animations for Tractiongotchi */
   .pixel-bounce {
     animation: pixelBounce 2s ease-in-out infinite;
   }
@@ -143,13 +159,31 @@ All colors MUST be HSL.
     animation: pixelGlow 1.5s ease-in-out infinite alternate;
   }
 
+  /* Modern animations */
+  .float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .scale-hover {
+    transition: transform 0.3s ease;
+  }
+
+  .scale-hover:hover {
+    transform: scale(1.02);
+  }
+
   @keyframes pixelBounce {
     0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-4px); }
+    50% { transform: translateY(-8px); }
   }
 
   @keyframes pixelGlow {
-    0% { filter: brightness(1); }
-    100% { filter: brightness(1.2) drop-shadow(0 0 4px hsl(var(--accent))); }
+    0% { filter: brightness(1) drop-shadow(0 0 0px hsl(var(--accent))); }
+    100% { filter: brightness(1.1) drop-shadow(0 0 16px hsl(var(--accent) / 0.6)); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-4px); }
   }
 }
