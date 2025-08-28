@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { Plus, TrendingUp, RotateCcw } from 'lucide-react';
 import Tractiongotchi from '@/components/Tractiongotchi';
 import TrainingForm from '@/components/TrainingForm';
 import ProgressChart from '@/components/ProgressChart';
@@ -53,51 +54,46 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <header className="glass-card mx-6 mt-6 rounded-3xl p-6 text-center">
-        <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-2">
+      <header className="glass-card mx-6 mt-4 rounded-2xl p-4 text-center">
+        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
           Tractiongotchi
         </h1>
-        <p className="text-sm text-muted-foreground opacity-75">
+        <p className="text-xs text-muted-foreground opacity-60 mt-1">
           par Lucas Lefèvre
         </p>
       </header>
 
-      {/* Main content */}
-      <main className="flex-1 flex flex-col items-center justify-center p-6 space-y-10">
+      <main className="flex-1 flex flex-col items-center justify-center">
         <Tractiongotchi 
           records={records}
           className="animate-fade-in"
         />
 
         {/* Action buttons */}
-        <div className="flex flex-col sm:flex-row gap-6 w-full max-w-md">
+        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 flex gap-4">
           <Button
             onClick={() => setShowForm(true)}
-            variant="default"
-            className="flex-1 text-lg py-6 px-8 rounded-2xl glass-button"
+            className="glass-button rounded-full w-14 h-14 p-0"
           >
-            Encoder
+            <Plus className="w-6 h-6 text-black" />
           </Button>
           
           <Button
             onClick={() => setShowChart(true)}
-            variant="outline"
-            className="flex-1 text-lg py-6 px-8 rounded-2xl"
+            className="glass-button rounded-full w-14 h-14 p-0"
           >
-            Progression
+            <TrendingUp className="w-6 h-6 text-black" />
           </Button>
-        </div>
 
-        {/* Reset button for dead state */}
-        {creatureState === 'dead' && (
-          <Button
-            onClick={resetCreature}
-            variant="destructive"
-            className="text-base px-8 py-4 rounded-2xl"
-          >
-            Reset
-          </Button>
-        )}
+          {creatureState === 'dead' && (
+            <Button
+              onClick={resetCreature}
+              className="glass-button rounded-full w-14 h-14 p-0 !bg-red-500/20 !border-red-500/30"
+            >
+              <RotateCcw className="w-6 h-6 text-black" />
+            </Button>
+          )}
+        </div>
       </main>
 
       {/* Footer */}

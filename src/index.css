@@ -138,14 +138,16 @@ All colors MUST be HSL.
 
   .glass-button {
     background: hsl(var(--glass-primary));
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(30px);
     border: 1px solid hsl(var(--primary) / 0.2);
-    box-shadow: 0 4px 16px hsl(var(--primary) / 0.1);
+    box-shadow: 0 8px 32px hsl(var(--primary) / 0.1);
+    transition: all 0.3s ease;
   }
 
   .glass-button:hover {
     background: hsl(var(--primary) / 0.15);
-    box-shadow: 0 6px 24px hsl(var(--primary) / 0.15);
+    box-shadow: 0 12px 40px hsl(var(--primary) / 0.2);
+    transform: translateY(-2px);
   }
 }
 
