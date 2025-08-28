@@ -40,12 +40,12 @@ const getImageForState = (state: CreatureState) => {
   }
 };
 
-const getStateMessage = (state: CreatureState, daysSince: number) => {
+const getStateMessage = (state: CreatureState) => {
   switch (state) {
-    case 'normal': return `Votre Tractiongotchi se porte bien ! Dernier entraînement : il y a ${daysSince} jour${daysSince > 1 ? 's' : ''}`;
-    case 'strong': return "💪 NOUVEAU RECORD ! Votre Tractiongotchi est super musclé !";
-    case 'tired': return `😴 Votre Tractiongotchi est fatigué... ${daysSince} jours sans entraînement`;
-    case 'dead': return "💀 Votre Tractiongotchi est mort... Recommencez !";
+    case 'normal': return "En forme";
+    case 'strong': return "💪 Record battu !";
+    case 'tired': return "😴 Fatigué";
+    case 'dead': return "💀 RIP";
   }
 };
 
@@ -66,21 +66,21 @@ export default function Tractiongotchi({ records, className = "" }: Traactiongot
     : 0;
 
   return (
-    <div className={`flex flex-col items-center space-y-6 ${className}`}>
+    <div className={`flex flex-col items-center space-y-8 ${className}`}>
       <div className="relative">
-        <div className="w-64 h-64 glass-card rounded-3xl p-8 flex items-center justify-center float">
+        <div className="w-80 h-80 glass-card rounded-[3rem] p-12 flex items-center justify-center float">
           <img 
             src={getImageForState(state)}
             alt={`Tractiongotchi ${state}`}
-            className={`w-48 h-48 pixel-perfect ${state === 'normal' ? 'pixel-bounce' : ''} ${state === 'strong' ? 'pixel-glow' : ''}`}
+            className={`w-64 h-64 pixel-perfect ${state === 'normal' ? 'pixel-bounce' : ''} ${state === 'strong' ? 'pixel-glow' : ''}`}
           />
         </div>
       </div>
       
-      <div className="text-center px-6">
-        <div className="glass-card rounded-2xl p-4 max-w-sm">
-          <p className="text-sm text-foreground">
-            {getStateMessage(state, daysSinceLastTraining)}
+      <div className="text-center">
+        <div className="glass-card rounded-2xl px-6 py-3">
+          <p className="text-lg font-medium text-foreground">
+            {getStateMessage(state)}
           </p>
         </div>
       </div>

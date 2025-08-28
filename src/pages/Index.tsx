@@ -53,15 +53,12 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <header className="glass-card mx-6 mt-6 rounded-3xl p-8 text-center shadow-xl">
-        <h1 className="text-4xl md:text-5xl font-bold text-primary mb-3">
+      <header className="glass-card mx-6 mt-6 rounded-3xl p-6 text-center">
+        <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-2">
           Tractiongotchi
         </h1>
-        <p className="text-muted-foreground">
-          Développé par <span className="font-semibold text-primary">Lucas Lefèvre</span>
-        </p>
-        <p className="text-sm text-muted-foreground mt-2">
-          Gardez votre alien virtuel en vie grâce aux tractions ! 👽
+        <p className="text-sm text-muted-foreground opacity-75">
+          par Lucas Lefèvre
         </p>
       </header>
 
@@ -73,21 +70,21 @@ const Index = () => {
         />
 
         {/* Action buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 w-full max-w-lg">
+        <div className="flex flex-col sm:flex-row gap-6 w-full max-w-md">
           <Button
             onClick={() => setShowForm(true)}
             variant="default"
-            className="flex-1 text-lg py-4 px-8"
+            className="flex-1 text-lg py-6 px-8 rounded-2xl glass-button"
           >
-            🏋️ Enregistrer tractions
+            Encoder
           </Button>
           
           <Button
             onClick={() => setShowChart(true)}
             variant="outline"
-            className="flex-1 text-lg py-4 px-8"
+            className="flex-1 text-lg py-6 px-8 rounded-2xl"
           >
-            📊 Voir progression
+            Progression
           </Button>
         </div>
 
@@ -96,17 +93,16 @@ const Index = () => {
           <Button
             onClick={resetCreature}
             variant="destructive"
-            className="text-base px-6 py-3"
+            className="text-base px-8 py-4 rounded-2xl"
           >
-            🔄 Recommencer
+            Reset
           </Button>
         )}
       </main>
 
       {/* Footer */}
-      <footer className="text-center py-6 text-sm text-muted-foreground">
-        <p>© 2024 Lucas Lefèvre - Tractiongotchi</p>
-        <p className="text-xs mt-1">Votre compagnon virtuel pour rester motivé ! 💪</p>
+      <footer className="text-center py-4 text-xs text-muted-foreground opacity-60">
+        <p>© 2024 Lucas Lefèvre</p>
       </footer>
     </div>
   );
