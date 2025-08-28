@@ -52,54 +52,49 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative overflow-hidden">
       {/* Header */}
-      <header className="glass-card mx-6 mt-4 rounded-2xl p-4 text-center">
-        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+      <div className="absolute top-8 left-1/2 transform -translate-x-1/2 text-center z-10">
+        <h1 className="text-3xl md:text-4xl font-bold text-black mb-1">
           Tractiongotchi
         </h1>
-        <p className="text-xs text-muted-foreground opacity-60 mt-1">
+        <p className="text-xs text-gray-500">
           par Lucas Lefèvre
         </p>
-      </header>
+      </div>
 
-      <main className="flex-1 flex flex-col items-center justify-center">
+      <main className="flex-1 flex items-center justify-center">
         <Tractiongotchi 
           records={records}
           className="animate-fade-in"
         />
 
         {/* Action buttons */}
-        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 flex gap-4">
+        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 flex gap-6">
           <Button
             onClick={() => setShowForm(true)}
-            className="glass-button rounded-full w-14 h-14 p-0"
+            className="glass-button rounded-full w-16 h-16 p-0 shadow-lg"
           >
-            <Plus className="w-6 h-6 text-black" />
+            <Plus className="w-7 h-7 text-black" />
           </Button>
           
           <Button
             onClick={() => setShowChart(true)}
-            className="glass-button rounded-full w-14 h-14 p-0"
+            className="glass-button rounded-full w-16 h-16 p-0 shadow-lg"
           >
-            <TrendingUp className="w-6 h-6 text-black" />
+            <TrendingUp className="w-7 h-7 text-black" />
           </Button>
 
           {creatureState === 'dead' && (
             <Button
               onClick={resetCreature}
-              className="glass-button rounded-full w-14 h-14 p-0 !bg-red-500/20 !border-red-500/30"
+              className="glass-button rounded-full w-16 h-16 p-0 shadow-lg !bg-red-500/20 !border-red-500/30"
             >
-              <RotateCcw className="w-6 h-6 text-black" />
+              <RotateCcw className="w-7 h-7 text-black" />
             </Button>
           )}
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="text-center py-4 text-xs text-muted-foreground opacity-60">
-        <p>© 2024 Lucas Lefèvre</p>
-      </footer>
     </div>
   );
 };

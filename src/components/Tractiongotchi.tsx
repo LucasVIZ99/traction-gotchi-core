@@ -66,17 +66,17 @@ export default function Tractiongotchi({ records, className = "" }: Traactiongot
     : 0;
 
   return (
-    <div className={`flex flex-col items-center justify-center min-h-[70vh] space-y-8 ${className}`}>
-      <div className="relative flex items-center justify-center">
+    <div className={`flex flex-col items-center justify-center space-y-6 ${className}`}>
+      <div className="flex items-center justify-center">
         <img 
           src={getImageForState(state)}
           alt={`Tractiongotchi ${state}`}
-          className={`w-96 h-96 md:w-[28rem] md:h-[28rem] pixel-perfect ${state === 'normal' ? 'pixel-bounce' : ''} ${state === 'strong' ? 'pixel-glow' : ''}`}
+          className={`w-96 h-96 md:w-[32rem] md:h-[32rem] pixel-perfect ${state === 'normal' ? 'pixel-bounce' : ''} ${state === 'strong' ? 'pixel-glow' : ''}`}
         />
       </div>
       
       <div className="text-center">
-        <div className="glass-card rounded-2xl px-6 py-3">
+        <div className="glass-card rounded-full px-8 py-3">
           <p className="text-lg font-medium text-foreground">
             {getStateMessage(state)}
           </p>
