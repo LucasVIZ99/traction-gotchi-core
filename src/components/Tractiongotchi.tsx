@@ -43,36 +43,13 @@ const getCreatureState = (records: TrainingRecord[]): CreatureState => {
   return 'normal';
 };
 
-const getImageForState = (state: CreatureState, avatarType: AvatarType) => {
-  if (state === 'dead') {
-    // For dead state, use the tired version but with lower opacity
-    return getImageForState('tired', avatarType);
-  }
-
-  switch (avatarType) {
-    case 'alien':
-      switch (state) {
-        case 'normal': return alienNormal;
-        case 'strong': return alienStrong;
-        case 'tired': return alienTired;
-        default: return alienNormal;
-      }
-    case 'robot':
-      switch (state) {
-        case 'normal': return robotNormal;
-        case 'strong': return robotStrong;
-        case 'tired': return robotTired;
-        default: return robotNormal;
-      }
-    case 'capybara':
-      switch (state) {
-        case 'normal': return capybaraNormal;
-        case 'strong': return capybaraStrong;
-        case 'tired': return capybaraTired;
-        default: return capybaraNormal;
-      }
-    default:
-      return alienNormal;
+const getImageForState = (state: CreatureState) => {
+  switch (state) {
+    case 'normal': return alienNormal;
+    case 'strong': return alienStrong;
+    case 'tired': return alienTired;
+    case 'dead': return alienTired; // Use tired image for dead state
+    default: return alienNormal;
   }
 };
 
@@ -87,11 +64,10 @@ const getStateMessage = (state: CreatureState) => {
 
 interface TraactiongotchiProps {
   records: TrainingRecord[];
-  avatarType: AvatarType;
   className?: string;
 }
 
-export default function Tractiongotchi({ records, avatarType, className = "" }: TraactiongotchiProps) {
+export default function Tractiongotchi({ records, className = "" }: TraactiongotchiProps) {
   const [state, setState] = useState<CreatureState>('normal');
   
   useEffect(() => {
@@ -106,9 +82,9 @@ export default function Tractiongotchi({ records, avatarType, className = "" }: 
     <div className={`flex flex-col items-center justify-center space-y-6 ${className}`}>
       <div className="flex items-center justify-center">
         <img 
-          src={getImageForState(state, avatarType)}
-          alt={`${avatarType} ${state}`}
-          className={`w-96 h-96 md:w-[32rem] md:h-[32rem] pixel-perfect ${state === 'normal' ? 'pixel-bounce' : ''} ${state === 'strong' ? 'pixel-glow' : ''} ${state === 'dead' ? 'opacity-50 grayscale' : ''}`}
+          src={getImageForState(state)}
+          alt={`alien ${state}`}
+          className={`w-96 h-96 md:w-[32rem] md:h-[32rem] pixel-perfect alien-float ${state === 'strong' ? 'pixel-glow' : ''} ${state === 'dead' ? 'opacity-50 grayscale' : ''}`}
         />
       </div>
       

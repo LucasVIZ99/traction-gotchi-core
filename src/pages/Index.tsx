@@ -91,20 +91,10 @@ const Index = () => {
         </p>
       </div>
 
-      {/* Avatar selector button */}
-      <div className="absolute top-6 right-6 z-10">
-        <Button
-          onClick={() => setShowAvatarSelector(true)}
-          className="glass-button rounded-full w-12 h-12 p-0"
-        >
-          <Settings className="w-5 h-5 text-black" />
-        </Button>
-      </div>
 
       <main className="flex-1 flex items-center justify-center pt-16">
         <Tractiongotchi 
           records={records}
-          avatarType={avatarType}
           className="animate-fade-in"
         />
 
@@ -124,14 +114,13 @@ const Index = () => {
             <TrendingUp className="w-6 h-6 text-black" />
           </Button>
 
-          {records.length > 0 && (
-            <Button
-              onClick={() => setShowShareModal(true)}
-              className="glass-button rounded-full w-16 h-16 p-0 shadow-lg"
-            >
-              <Share2 className="w-6 h-6 text-black" />
-            </Button>
-          )}
+          <Button
+            onClick={() => setShowShareModal(true)}
+            className="glass-button rounded-full w-16 h-16 p-0 shadow-lg"
+            disabled={records.length === 0}
+          >
+            <Share2 className={`w-6 h-6 ${records.length === 0 ? 'text-gray-400' : 'text-black'}`} />
+          </Button>
 
           {creatureState === 'dead' && (
             <Button
