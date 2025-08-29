@@ -15,10 +15,8 @@ interface TrainingRecord {
 
 const Index = () => {
   const [records, setRecords] = useLocalStorage<TrainingRecord[]>('tractiongotchi-records', []);
-  const [avatarType, setAvatarType] = useLocalStorage<AvatarType>('tractiongotchi-avatar', 'alien');
   const [showForm, setShowForm] = useState(false);
   const [showChart, setShowChart] = useState(false);
-  const [showAvatarSelector, setShowAvatarSelector] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
 
   const addRecord = (record: TrainingRecord) => {
@@ -56,17 +54,6 @@ const Index = () => {
     );
   }
 
-  if (showAvatarSelector) {
-    return (
-      <div className="min-h-screen bg-white p-4 flex items-center justify-center">
-        <AvatarSelector 
-          currentAvatar={avatarType}
-          onSelectAvatar={setAvatarType}
-          onClose={() => setShowAvatarSelector(false)}
-        />
-      </div>
-    );
-  }
 
   if (showShareModal) {
     return (
@@ -104,14 +91,14 @@ const Index = () => {
             onClick={() => setShowForm(true)}
             className="glass-button rounded-full w-16 h-16 p-0 shadow-lg"
           >
-            <Plus className="w-6 h-6 text-black" />
+            <Plus className="w-6 h-6 text-gray-800" />
           </Button>
           
           <Button
             onClick={() => setShowChart(true)}
             className="glass-button rounded-full w-16 h-16 p-0 shadow-lg"
           >
-            <TrendingUp className="w-6 h-6 text-black" />
+            <TrendingUp className="w-6 h-6 text-gray-800" />
           </Button>
 
           <Button
@@ -119,7 +106,7 @@ const Index = () => {
             className="glass-button rounded-full w-16 h-16 p-0 shadow-lg"
             disabled={records.length === 0}
           >
-            <Share2 className={`w-6 h-6 ${records.length === 0 ? 'text-gray-400' : 'text-black'}`} />
+            <Share2 className={`w-6 h-6 ${records.length === 0 ? 'text-gray-400' : 'text-gray-800'}`} />
           </Button>
 
           {creatureState === 'dead' && (
@@ -127,7 +114,7 @@ const Index = () => {
               onClick={resetCreature}
               className="glass-button rounded-full w-16 h-16 p-0 shadow-lg !bg-red-500/20 !border-red-500/30"
             >
-              <RotateCcw className="w-6 h-6 text-black" />
+              <RotateCcw className="w-6 h-6 text-red-600" />
             </Button>
           )}
         </div>

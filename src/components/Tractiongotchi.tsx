@@ -48,7 +48,7 @@ const getImageForState = (state: CreatureState) => {
     case 'normal': return alienNormal;
     case 'strong': return alienStrong;
     case 'tired': return alienTired;
-    case 'dead': return alienTired; // Use tired image for dead state
+    case 'dead': return alienTired; // Use tired image for dead state with opacity
     default: return alienNormal;
   }
 };
